@@ -1,0 +1,27 @@
+import type { Metadata } from "next";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./globals.css";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "MIP | Momentum Internship Program — Projxon",
+  description:
+    "Accelerate Talent, Elevate Impact. Custom-designed internship programs that create future-ready leaders. Momentum Internship Program (MIP) — Higher Ed, Workforce & Employers.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className="d-flex flex-column min-vh-100 bg-white text-dark w-100">
+        <Header />
+        <main className="flex-grow-1 w-100">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

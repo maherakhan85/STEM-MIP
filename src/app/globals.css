@@ -1,0 +1,267 @@
+/* Dark blue & white theme - royal blue headings, white background */
+
+:root {
+  --mip-dark-blue: #0c2340;
+  --mip-royal-blue: #4169e1;
+  --mip-royal-blue-dark: #2d4fc4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fff;
+  color: #212529;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Larger headings site-wide */
+h1, .h1 { font-size: 2.5rem; }
+h2, .h2 { font-size: 2rem; }
+h3, .h3 { font-size: 1.75rem; }
+h4, .h4 { font-size: 1.5rem; }
+h5, .h5 { font-size: 1.25rem; }
+h6, .h6 { font-size: 1.125rem; }
+
+@media (min-width: 768px) {
+  h1, .h1 { font-size: 2.75rem; }
+  h2, .h2 { font-size: 2.25rem; }
+  h3, .h3 { font-size: 1.875rem; }
+}
+
+/* Side / section headings: navbar background color for text, centered */
+.section-heading,
+h1.section-heading,
+h2.section-heading,
+.page-heading,
+.hero-title,
+.subheading-royal {
+  background-color: transparent !important;
+  color: var(--mip-dark-blue) !important;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0;
+  text-align: center;
+}
+
+/* Navbar: large, full-width, prominent */
+.navbar-mip {
+  background-color: var(--mip-dark-blue) !important;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  min-height: 72px;
+}
+
+@media (min-width: 768px) {
+  .navbar-mip {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-height: 80px;
+  }
+}
+
+.navbar-mip .container {
+  max-width: 1200px;
+}
+
+.navbar-mip .navbar-brand {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .navbar-mip .navbar-brand {
+    font-size: 1.65rem;
+  }
+}
+
+.navbar-mip .navbar-text {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .navbar-mip .navbar-text {
+    font-size: 1.1rem;
+  }
+}
+
+.navbar-mip .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-mip .nav-link {
+    font-size: 1.05rem;
+    padding: 0.5rem 0.85rem !important;
+  }
+}
+
+.navbar-mip .nav-link:hover {
+  color: #fff !important;
+}
+
+.navbar-mip .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 0.65rem;
+}
+
+.navbar-mip .navbar-toggler-icon {
+  filter: invert(1);
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.navbar-mip .btn-dark {
+  background-color: var(--mip-royal-blue);
+  border-color: var(--mip-royal-blue);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .navbar-mip .btn-dark {
+    font-size: 1rem;
+    padding: 0.55rem 1.15rem;
+  }
+}
+
+.navbar-mip .btn-dark:hover {
+  background-color: var(--mip-royal-blue-dark);
+  border-color: var(--mip-royal-blue-dark);
+  color: #fff;
+}
+
+/* Footer */
+.footer-mip {
+  background-color: var(--mip-dark-blue) !important;
+}
+
+.footer-mip,
+.footer-mip h6 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-mip .text-muted {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.footer-mip a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-mip a:hover {
+  color: #fff;
+}
+
+.footer-mip .border-top {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Scroll-triggered animations */
+/* Hero entrance (runs once on load) */
+.hero-enter {
+  animation: heroFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-anchor {
+  will-change: opacity, transform;
+}
+
+.scroll-anchor.animate-out {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.scroll-anchor.animate-in.animate-fadeUp {
+  animation: fadeUpIn 0.65s ease-out forwards;
+}
+
+.scroll-anchor.animate-in.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.scroll-anchor.animate-in.animate-slideLeft {
+  animation: slideLeftIn 0.6s ease-out forwards;
+}
+
+.scroll-anchor.animate-in.animate-slideRight {
+  animation: slideRightIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeftIn {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRightIn {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
