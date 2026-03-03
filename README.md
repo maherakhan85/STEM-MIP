@@ -1,6 +1,6 @@
 # Projxon | STEM Workforce Pipeline — Grant Website
 
-A single-page Next.js website for the **Projxon / Momentum Internship Program (MIP)** STEM workforce pipeline initiative, designed for grant applications (e.g., OSIT) and ecosystem partners.
+A Next.js website for the **Projxon / Momentum Internship Program (MIP)** STEM workforce pipeline initiative, designed for grant applications (e.g., OSIT) and ecosystem partners.
 
 ## Structure
 
