@@ -160,7 +160,7 @@ export function AboutSection() {
         </div>
 
         <div className="mb-5">
-          <h3 className="h2 fw-bold text-dark mb-3 text-center">Founder's Commitment</h3>
+          <h3 className="h2 fw-bold text-dark mb-3 text-center">Founder&apos;s Commitment</h3>
           <p className="text-muted mb-2">
             I started this because I saw the same problem from both sides—schools sending talented people out without a playbook, and employers wondering where to find them.
           
