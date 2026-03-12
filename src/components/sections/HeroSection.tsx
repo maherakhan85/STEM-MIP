@@ -10,8 +10,8 @@ const TYPEWRITER_START_DELAY_MS = 1100;
 const HERO_SLIDE_INTERVAL_MS = 5000;
 
 const HERO_BG_IMAGES = [
-  "/images/stem-hero-HR.jpg",
   "/images/stem-hero-IT.jpg",
+  "/images/stem-hero-HR.jpg",
   "/images/stem-hero-mkt.jpg",
   "/images/stem-hero-business.jpg",
 ];
