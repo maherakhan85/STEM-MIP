@@ -7,8 +7,8 @@ type AnimateOnScrollProps = {
   className?: string;
   /** Delay before animation starts (ms) */
   delay?: number;
-  /** 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' */
-  animation?: "fadeUp" | "fadeIn" | "slideLeft" | "slideRight";
+  /** 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' | 'scaleUp' | 'blurFade' */
+  animation?: "fadeUp" | "fadeIn" | "slideLeft" | "slideRight" | "scaleUp" | "blurFade";
 };
 
 export function AnimateOnScroll({

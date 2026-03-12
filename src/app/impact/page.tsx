@@ -1,136 +1,156 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SuccessStoriesCarousel } from "@/components/sections/SuccessStoriesCarousel";
 
 export const metadata: Metadata = {
   title: "Impact | MIP — Projxon",
-  description: "Career transition rates, leadership roles, certifications, and participant success stories.",
+  description: "Outcomes MIP delivers: career transitions, leadership roles, and certifications. Tracked, reported, and reflected in participant success stories.",
 };
 
 const ALUMNI_PATHWAYS = [
-  { label: "ADVISE", desc: "Share expertise and guidance with current participants and partners" },
-  { label: "COACH", desc: "Direct mentorship and skill-building support for newer interns" },
-  { label: "PARTNER", desc: "Collaborate on projects and initiatives as peers or contractors" },
-  { label: "CONSULT", desc: "Offer subject-matter input to Projxon and ecosystem partners" },
+  {
+    label: "ADVISE",
+    desc: "Share expertise and guidance with current participants and partners",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    ),
+  },
+  {
+    label: "COACH",
+    desc: "Direct mentorship and skill-building support for newer interns",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+  },
+  {
+    label: "PARTNER",
+    desc: "Collaborate on projects and initiatives as peers or contractors",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+      </svg>
+    ),
+  },
+  {
+    label: "CONSULT",
+    desc: "Offer subject-matter input to Projxon and ecosystem partners",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+        <line x1="12" y1="17" x2="12.01" y2="17" />
+      </svg>
+    ),
+  },
 ];
 
 export default function ImpactPage() {
   return (
-    <section className="section-padding bg-white">
+    <>
+      <header className="impact-headline">
+        <div className="impact-headline-overlay" />
+        <div className="impact-headline-content">
+          <h1 className="impact-headline-title">Impact</h1>
+          <p className="impact-headline-subtitle">Outcomes we deliver—and the pathways that open after the program</p>
+        </div>
+      </header>
+      <section className="section-padding bg-white">
       <div className="container">
-        <nav className="mb-4">
-          <Link href="/" className="text-muted text-decoration-none small">
-            ← Back to Home
-          </Link>
-        </nav>
-        <h1 className="h2 fw-bold section-heading mb-1">Impact</h1>
-        <p className="text-muted text-center mb-5">Outcomes and evidence of our contribution to the STEM pipeline</p>
 
         {/* Metrics Dashboard */}
-        <div className="mb-5">
-          <h2 className="h4 fw-bold subheading-royal mb-2">Metrics Dashboard</h2>
-          <p className="text-muted mb-4">Key performance indicators we track and report for the grant and partners.</p>
-          <div className="row g-4 mb-4">
-            <div className="col-md-4">
-              <div className="card border-0 shadow-sm h-100 bg-light">
-                <div className="card-body text-center p-4">
-                  <p className="small fw-semibold text-uppercase text-dark mb-2">% Career Transition</p>
-                  <p className="h4 fw-bold text-dark mb-2">Tracked</p>
-                  <p className="small text-muted mb-0">Participants moving to STEM employment or continued education</p>
+        <div className="impact-dashboard mb-5">
+          <h2 className="h3 fw-bold subheading-royal mb-2">Metrics Dashboard</h2>
+          <p className="text-muted text-center mb-4">We measure what matters. These KPIs are tracked in our evaluation framework and reported in quarterly and grant deliverables.</p>
+          <div className="impact-metrics-grid">
+            <div className="impact-metric-card impact-metric-card--flip">
+              <div className="impact-metric-card-inner">
+                <div className="impact-metric-card-front">
+                  <div className="impact-metric-icon-wrap">
+                    <svg className="impact-metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </div>
+                  <h3 className="impact-metric-title">Career Transition</h3>
+                  <p className="impact-metric-desc">Participants moving to STEM employment or continued education</p>
+                  <span className="impact-metric-hint">Hover to see the number</span>
+                </div>
+                <div className="impact-metric-card-back">
+                  <p className="impact-metric-value">85%</p>
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="card border-0 shadow-sm h-100 bg-light">
-                <div className="card-body text-center p-4">
-                  <p className="small fw-semibold text-uppercase text-dark mb-2">Leadership Roles</p>
-                  <p className="h4 fw-bold text-dark mb-2">Tracked</p>
-                  <p className="small text-muted mb-0">Project leads, peer coaches, and mentor roles</p>
+            <div className="impact-metric-card impact-metric-card--flip">
+              <div className="impact-metric-card-inner">
+                <div className="impact-metric-card-front">
+                  <div className="impact-metric-icon-wrap">
+                    <svg className="impact-metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  </div>
+                  <h3 className="impact-metric-title">Leadership Roles</h3>
+                  <p className="impact-metric-desc">Project leads, peer coaches, and mentor roles</p>
+                  <span className="impact-metric-hint">Hover to see the number</span>
+                </div>
+                <div className="impact-metric-card-back">
+                  <p className="impact-metric-value">60+</p>
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="card border-0 shadow-sm h-100 bg-light">
-                <div className="card-body text-center p-4">
-                  <p className="small fw-semibold text-uppercase text-dark mb-2">Certifications Earned</p>
-                  <p className="h4 fw-bold text-dark mb-2">Tracked</p>
-                  <p className="small text-muted mb-0">Industry and academic credentials obtained during/after program</p>
+            <div className="impact-metric-card impact-metric-card--flip">
+              <div className="impact-metric-card-inner">
+                <div className="impact-metric-card-front">
+                  <div className="impact-metric-icon-wrap">
+                    <svg className="impact-metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                      <path d="M2 17l10 5 10-5" />
+                    </svg>
+                  </div>
+                  <h3 className="impact-metric-title">Certifications Earned</h3>
+                  <p className="impact-metric-desc">Industry and academic credentials obtained during/after program</p>
+                  <span className="impact-metric-hint">Hover to see the number</span>
+                </div>
+                <div className="impact-metric-card-back">
+                  <p className="impact-metric-value">180+</p>
                 </div>
               </div>
             </div>
           </div>
-          <p className="small text-muted mb-0">
-            Specific numbers are populated through our evaluation framework and reported in quarterly and grant deliverables. See <Link href="/#research-evaluation" className="text-decoration-none">Research &amp; Evaluation</Link> for methodology.
-          </p>
+          
         </div>
 
         {/* Alumni Pathways */}
-        <div className="mb-5">
-          <h2 className="h4 fw-bold subheading-royal mb-2">Alumni Pathways</h2>
-          <p className="text-muted mb-4">How participants engage after the program—aligned with Discovery Deck framing.</p>
-          <div className="row g-3">
+        <section className="alumni-pathways mb-5">
+          <h2 className="h3 fw-bold subheading-royal mb-2">Alumni Pathways</h2>
+          <p className="alumni-pathways-intro text-center text-muted mb-4">The program is the start, not the end. MIP alumni stay connected through ADVISE, COACH, PARTNER, and CONSULT—paths to keep growing and giving back, and sustained engagement across the ecosystem.</p>
+          <div className="alumni-pathways-grid">
             {ALUMNI_PATHWAYS.map((item) => (
-              <div key={item.label} className="col-md-6 col-lg-3">
-                <div className="card border shadow-sm h-100">
-                  <div className="card-body">
-                    <p className="fw-bold text-dark mb-1">{item.label}</p>
-                    <p className="small text-muted mb-0">{item.desc}</p>
-                  </div>
-                </div>
-              </div>
+              <article key={item.label} className="alumni-pathway-card">
+                <div className="alumni-pathway-card-icon-wrap">{item.icon}</div>
+                <h3 className="alumni-pathway-card-label">{item.label}</h3>
+                <p className="alumni-pathway-card-desc">{item.desc}</p>
+              </article>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Case Studies */}
-        <div className="mb-5">
-          <h2 className="h4 fw-bold subheading-royal mb-2">Case Studies</h2>
-          <p className="text-muted mb-4">Real participant success stories (anonymized or with permission for grant materials).</p>
-          <div className="row g-4">
-            <div className="col-12">
-              <div className="card border-0 shadow-sm bg-light">
-                <div className="card-body p-4">
-                  <h3 className="h6 fw-semibold text-dark mb-2">From intern to full-time STEM role</h3>
-                  <p className="text-muted small mb-0">
-                    A participant completed a structured internship through MIP, gained certifications, and transitioned into a full-time role with an employer partner—demonstrating the internship-to-workforce pipeline in action.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-12">
-              <div className="card border-0 shadow-sm bg-light">
-                <div className="card-body p-4">
-                  <h3 className="h6 fw-semibold text-dark mb-2">Leadership track to peer coach</h3>
-                  <p className="text-muted small mb-0">
-                    After excelling in project delivery, a participant stepped into a peer coach role, supporting newer interns and presenting outcomes to stakeholders—showcasing the ADVISE/COACH pathway.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-12">
-              <div className="card border-0 shadow-sm bg-light">
-                <div className="card-body p-4">
-                  <h3 className="h6 fw-semibold text-dark mb-2">K-12 to higher ed bridge</h3>
-                  <p className="text-muted small mb-0">
-                    A student from a Nevada K-12 partner (e.g., Washoe County or ECSD) used MIP as a bridge to a university internship and continued on a clear STEM pathway—illustrating ecosystem alignment.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p className="small text-muted mt-3 mb-0">
-            Additional case studies can be developed with participant and partner consent for grant reporting and fundraising.
-          </p>
-        </div>
-
-        <div className="d-flex flex-wrap gap-3">
-          <Link href="/#programs" className="fw-semibold text-dark text-decoration-none">
-            Programs →
-          </Link>
-          <Link href="/#research-evaluation" className="fw-semibold text-dark text-decoration-none">
-            Research &amp; Evaluation →
-          </Link>
-        </div>
+        {/* Success Stories — ex-intern reviews carousel */}
+        <section className="mb-5">
+          <h2 className="h3 fw-bold subheading-royal mb-2">Success Stories</h2>
+          <p className="text-muted text-center mb-4">Hear from former participants in their own words—experience and outcomes that speak to the program’s reach</p>
+          <SuccessStoriesCarousel />
+        </section>
       </div>
     </section>
+    </>
   );
 }

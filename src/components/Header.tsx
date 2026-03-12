@@ -2,25 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const mainNavItems = [
   { href: "/about", label: "About" },
   { href: "/impact", label: "Impact" },
   { href: "/partners", label: "Partners" },
-  { href: "/events", label: "Events" },
+  { href: "/events", label: "Culture" },
   { href: "/#contact", label: "Contact", isHash: true },
-];
-
-const homeDropdownItems = [
-  { href: "/#home", label: "Overview", isHash: true },
-  { href: "/#stem-initiative", label: "STEM Initiative", isHash: true },
-  { href: "/#programs", label: "Programs", isHash: true },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [homeDropdownOpen, setHomeDropdownOpen] = useState(false);
   const pathname = usePathname();
 
   const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -32,14 +26,20 @@ export function Header() {
       }
     }
     setMobileOpen(false);
-    setHomeDropdownOpen(false);
   };
 
   return (
-    <nav className="navbar navbar-expand-md navbar-mip border-bottom shadow-sm sticky-top">
+    <nav className="navbar navbar-expand-md navbar-mip border-bottom shadow-sm">
       <div className="container">
-        <Link href="/" className="navbar-brand fw-semibold">
-          MIP
+        <Link href="/" className="navbar-brand d-flex align-items-center p-0">
+          <Image
+            src="/images/projxon-mip-logo.png"
+            alt="MIP"
+            width={160}
+            height={52}
+            className="navbar-mip-logo"
+            priority
+          />
         </Link>
         <button
           type="button"
@@ -52,34 +52,6 @@ export function Header() {
         </button>
         <div className={`collapse navbar-collapse ${mobileOpen ? "show" : ""}`}>
           <ul className="navbar-nav ms-auto align-items-center">
-            {/* Home with dropdown */}
-            <li
-              className="nav-item dropdown"
-              onMouseEnter={() => setHomeDropdownOpen(true)}
-              onMouseLeave={() => setHomeDropdownOpen(false)}
-            >
-              <button
-                type="button"
-                className="nav-link dropdown-toggle border-0 bg-transparent text-white"
-                aria-expanded={homeDropdownOpen}
-                onClick={() => setHomeDropdownOpen(!homeDropdownOpen)}
-              >
-                Home
-              </button>
-              <ul className={`dropdown-menu dropdown-menu-dark ${homeDropdownOpen ? "show" : ""}`}>
-                {homeDropdownItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="dropdown-item"
-                      onClick={(e) => handleHashClick(e, item.href)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
             {mainNavItems.map((item) => (
               <li key={item.href} className="nav-item">
                 <Link
@@ -96,10 +68,15 @@ export function Header() {
                 href="https://app.dover.com/jobs/projxon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-dark btn-sm"
+                className="btn btn-dark btn-sm d-inline-flex align-items-center gap-2"
                 onClick={() => setMobileOpen(false)}
+                aria-label="View open roles at Projxon"
               >
-                View Open Roles
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                  <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                </svg>
+                <span>Careers</span>
               </a>
             </li>
           </ul>
