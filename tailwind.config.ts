@@ -9,19 +9,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        /* MIP-style: dark base with crisp accent */
+        /* MIP palette: #091057, #024CAA, #EC8305, #DBD3D3 */
         mip: {
-          dark: "#0f1419",
-          charcoal: "#1a1f26",
-          slate: "#252b33",
-          muted: "#6b7280",
-          accent: "#3b82f6",
-          "accent-light": "#60a5fa",
+          dark: "#091057",
+          "dark-blue": "#091057",
+          "medium-blue": "#024CAA",
+          "royal-blue": "#024CAA",
+          accent: "#EC8305",
+          "accent-light": "#f09428",
+          silver: "#DBD3D3",
         },
-        gold: "#D4AF37",
+        primary: {
+          50: "#e8eef9",
+          200: "#7ba8e8",
+          500: "#024CAA",
+          600: "#023d88",
+          700: "#091057",
+        },
+        accent: {
+          teal: "#EC8305",
+          500: "#EC8305",
+          600: "#d47404",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
       },
     },
   },
