@@ -68,7 +68,6 @@ export function ImpactSnapshotSection() {
     <section className="section-padding impact-snapshot-section">
       <div className="container">
         <h2 className="h1 fw-bold text-center section-heading mb-2">Impact at a Glance</h2>
-        <p className="text-center text-muted mb-5">What MIP delivers for participants and partners</p>
 
         <div className="impact-snapshot-carousel-wrap">
           <div className="impact-snapshot-carousel-mask">

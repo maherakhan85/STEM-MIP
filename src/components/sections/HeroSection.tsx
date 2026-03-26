@@ -2,11 +2,6 @@
 
 import { useState, useEffect } from "react";
 
-const HERO_INTRO_TEXT =
-  "Where academic potential meets industry impact. Real projects, real leadership—built for the next generation of STEM leaders";
-
-const TYPEWRITER_DELAY_MS = 55;
-const TYPEWRITER_START_DELAY_MS = 1100;
 const HERO_SLIDE_INTERVAL_MS = 5000;
 
 const HERO_BG_IMAGES = [
@@ -17,28 +12,7 @@ const HERO_BG_IMAGES = [
 ];
 
 export function HeroSection() {
-  const [visibleLength, setVisibleLength] = useState(0);
   const [bgIndex, setBgIndex] = useState(0);
-
-  useEffect(() => {
-    let intervalId: ReturnType<typeof setInterval> | null = null;
-    const startTimer = setTimeout(() => {
-      const total = HERO_INTRO_TEXT.length;
-      intervalId = setInterval(() => {
-        setVisibleLength((prev) => {
-          if (prev >= total) {
-            if (intervalId) clearInterval(intervalId);
-            return total;
-          }
-          return prev + 1;
-        });
-      }, TYPEWRITER_DELAY_MS);
-    }, TYPEWRITER_START_DELAY_MS);
-    return () => {
-      clearTimeout(startTimer);
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, []);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -46,8 +20,6 @@ export function HeroSection() {
     }, HERO_SLIDE_INTERVAL_MS);
     return () => clearInterval(id);
   }, []);
-
-  const visibleText = HERO_INTRO_TEXT.slice(0, visibleLength);
 
   return (
     <section id="home" className="section-padding hero-enter hero-section">
@@ -74,8 +46,11 @@ export function HeroSection() {
                 Accelerate Talent, Elevate Impact
               </h1>
             </div>
-            <p className="lead mb-0 hero-stagger-3 hero-intro-line">
-              {visibleText}
+            <p className="lead mb-2 hero-stagger-3 hero-intro-line">
+              Where academic potential meets industry impact through real project ownership.
+            </p>
+            <p className="mb-0 hero-stagger-3 hero-intro-subline">
+              MIP develops future-ready STEM leaders with structured mentorship, measurable outcomes, and client-focused delivery.
             </p>
           </div>
         </div>

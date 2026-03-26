@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 const nodes = [
@@ -43,7 +42,7 @@ const nodes = [
 ];
 
 export function EcosystemSection() {
-  const [activeIndex, setActiveIndex] = useState(1); // center card by default
+  const bodyTextColor = { color: "#333" };
 
   return (
     <section className="section-padding bg-white" id="where-mip-operates">
@@ -59,60 +58,35 @@ export function EcosystemSection() {
             />
           </div>
           <div className="col-lg-6">
-            <p className="text-dark lead mb-0 text-center" style={{ color: '#333' }}>
-            MIP, powered by Projxon, is the operational hub where theory meets execution. We bridge the gap between graduation and career by transforming academic potential into industry-standard performance. Here, talent and industry work in sync to deliver excellence for the global economy.            </p>
+            <p className="lead mb-0 text-center" style={bodyTextColor}>
+              MIP, hosted by PROJXON, is the operational hub where theory meets execution. We bridge the gap between graduation and career by transforming academic potential into industry-standard performance. Here, talent and industry work in sync to deliver excellence for the global economy.
+            </p>
           </div>
         </div>
 
-        {/* Ecosystem carousel: center card highlighted, side cards behind but visible */}
+        {/* Even cards across the section */}
         <AnimateOnScroll animation="fadeUp" delay={0}>
-          <div className="ecosystem-carousel">
-            {nodes.map((node, i) => {
-              const isActive = activeIndex === i;
-              return (
-                <button
-                  key={node.title}
-                  type="button"
-                  onClick={() => setActiveIndex(i)}
-                  className={`ecosystem-carousel-card ${isActive ? "ecosystem-carousel-card--active" : ""}`}
-                  style={{
-                    backgroundColor: "var(--mip-dark-blue)",
-                    minHeight: 280,
-                  }}
-                  aria-pressed={isActive}
-                  aria-label={`Focus on ${node.title}`}
-                >
+          <div className="row g-4">
+            {nodes.map((node) => (
+              <div key={node.title} className="col-12 col-md-6 col-lg-4 d-flex">
+                <div className="ecosystem-equal-card w-100">
                   <div className="card-body p-4 d-flex flex-column h-100 text-start">
-                    <div
-                      className="ecosystem-block-icon-wrap rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
-                      style={{
-                        width: 56,
-                        height: 56,
-                        backgroundColor: "var(--mip-accent)",
-                        color: "#fff",
-                      }}
-                    >
-                      {node.icon}
+                    <div className="ecosystem-card-head mb-3">
+                      <div className="ecosystem-block-icon-wrap rounded-3 d-inline-flex align-items-center justify-content-center">
+                        {node.icon}
+                      </div>
+                      <div className="ecosystem-card-head-text">
+                        <h3 className="h5 fw-bold mb-1 ecosystem-card-title">{node.title}</h3>
+                        <p className="text-uppercase small fw-bold mb-0 ecosystem-card-tag">{node.tag}</p>
+                      </div>
                     </div>
-                    <h3 className="h5 fw-bold mb-1 text-white">
-                      {node.title}
-                    </h3>
-                    <p
-                      className="text-uppercase small fw-bold mb-3 opacity-90"
-                      style={{ letterSpacing: "0.08em", color: "rgba(255,255,255,0.9)" }}
-                    >
-                      {node.tag}
-                    </p>
-                    <p
-                      className="mb-0 flex-grow-1 small lh-lg"
-                      style={{ color: "rgba(255,255,255,0.88)" }}
-                    >
+                    <p className="mb-0 flex-grow-1 small lh-lg ecosystem-card-desc">
                       {node.description}
                     </p>
                   </div>
-                </button>
-              );
-            })}
+                </div>
+              </div>
+            ))}
           </div>
         </AnimateOnScroll>
       </div>

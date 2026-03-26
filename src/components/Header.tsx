@@ -6,11 +6,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const mainNavItems = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/impact", label: "Impact" },
   { href: "/partners", label: "Partners" },
   { href: "/events", label: "Culture" },
-  { href: "/#contact", label: "Contact", isHash: true },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -56,8 +57,8 @@ export function Header() {
               <li key={item.href} className="nav-item">
                 <Link
                   href={item.href}
-                  onClick={(e) => item.isHash && handleHashClick(e, item.href)}
-                  className={`nav-link ${pathname === item.href ? "fw-semibold" : ""}`}
+                  onClick={(e) => handleHashClick(e, item.href)}
+                  className={`nav-link ${pathname === item.href ? "nav-link--active fw-semibold" : ""}`}
                 >
                   {item.label}
                 </Link>
@@ -68,7 +69,7 @@ export function Header() {
                 href="https://app.dover.com/jobs/projxon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-dark btn-sm d-inline-flex align-items-center gap-2"
+                className="btn btn-careers btn-sm d-inline-flex align-items-center gap-2"
                 onClick={() => setMobileOpen(false)}
                 aria-label="View open roles at Projxon"
               >

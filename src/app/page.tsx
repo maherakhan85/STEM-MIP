@@ -3,7 +3,6 @@ import { EcosystemSection } from "@/components/sections/EcosystemSection";
 import { ImpactSnapshotSection } from "@/components/sections/ImpactSnapshotSection";
 import { STEMInitiativeSection } from "@/components/sections/STEMInitiativeSection";
 import { ProgramsSection } from "@/components/sections/ProgramsSection";
-import { ContactSection } from "@/components/sections/ContactSection";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 export default function HomePage() {
@@ -21,9 +20,6 @@ export default function HomePage() {
       </AnimateOnScroll>
       <AnimateOnScroll animation="fadeUp" delay={120}>
         <ProgramsSection />
-      </AnimateOnScroll>
-      <AnimateOnScroll animation="scaleUp" delay={80}>
-        <ContactSection />
       </AnimateOnScroll>
     </>
   );

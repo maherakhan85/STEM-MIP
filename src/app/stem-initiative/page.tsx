@@ -80,8 +80,8 @@ export default function STEMInitiativePage() {
             <Link href="/programs" className="font-semibold text-primary-600 hover:text-primary-700">
               See Programs →
             </Link>
-            <Link href="/research-evaluation" className="font-semibold text-primary-600 hover:text-primary-700">
-              Research & Evaluation →
+            <Link href="/impact" className="font-semibold text-primary-600 hover:text-primary-700">
+              View Impact & Metrics →
             </Link>
           </div>
         </div>

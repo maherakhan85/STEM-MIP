@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { createPortal } from "react-dom";
 
 const CHALLENGE = {
   problem: {
@@ -53,44 +52,42 @@ const HOW_IT_WORKS = [
       </svg>
     ),
   },
+  {
+    step: 4,
+    title: "Mentor Feedback Loop",
+    body: "Mentors review progress, remove blockers, and coach interns on communication, ownership, and quality standards",
+    icon: (
+      <svg viewBox="0 0 64 64" fill="none" className="stem-timeline-step-icon" aria-hidden>
+        <circle cx="20" cy="24" r="8" stroke="currentColor" strokeWidth="2" />
+        <circle cx="44" cy="20" r="6" stroke="currentColor" strokeWidth="2" />
+        <path d="M8 48c0-7.7 5.8-14 13-14s13 6.3 13 14M34 48c0-5.5 4.2-10 9.5-10S53 42.5 53 48" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M30 26l7 4 10-9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    step: 5,
+    title: "Career Transition",
+    body: "Partners receive validated talent profiles, and interns move from project success to interviews and employment opportunities",
+    icon: (
+      <svg viewBox="0 0 64 64" fill="none" className="stem-timeline-step-icon" aria-hidden>
+        <rect x="10" y="16" width="44" height="30" rx="3" stroke="currentColor" strokeWidth="2" />
+        <path d="M24 16v-4a4 4 0 014-4h8a4 4 0 014 4v4M10 28h44M26 36l4 4 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
 ];
-
-const PARTNERSHIP_EMAIL = "busineees@projxon.com";
-const PARTNER_TYPES = ["University", "Employers"] as const;
 
 export function STEMInitiativeSection() {
   const [activeCard, setActiveCard] = useState<"problem" | "solution">("problem");
-  const [partnershipModalOpen, setPartnershipModalOpen] = useState(false);
-  const [partnershipForm, setPartnershipForm] = useState({
-    name: "",
-    email: "",
-    type: "" as "" | (typeof PARTNER_TYPES)[number],
-    message: "",
-  });
-
-  const handlePartnershipSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent("Partnership Request – MIP");
-    const body = encodeURIComponent(
-      `Name: ${partnershipForm.name}\nEmail: ${partnershipForm.email}\nType: ${partnershipForm.type || "Not selected"}\n\nMessage:\n${partnershipForm.message || "(none)"}`
-    );
-    window.location.href = `mailto:${PARTNERSHIP_EMAIL}?subject=${subject}&body=${body}`;
-    setPartnershipModalOpen(false);
-    setPartnershipForm({ name: "", email: "", type: "", message: "" });
-  };
 
   return (
     <section id="stem-initiative" className="section-padding bg-white">
       <div className="container">
         <h2 className="h1 fw-bold section-heading mb-1 ">STEM Initiative</h2>
 
-        {/* Problem vs. Solution — overlapping cards, click to highlight */}
-        <div className="stem-challenge-cards-wrap mb-5">
-          <button
-            type="button"
-            onClick={() => setActiveCard("problem")}
-            className={`stem-challenge-card stem-challenge-card--problem ${activeCard === "problem" ? "stem-challenge-card--active" : ""}`}
-          >
+        <div className="stem-challenge-single-wrap mb-5">
+          <div className="stem-challenge-single-card">
             <div className="stem-challenge-card-image">
               <img src="/images/stem-challenge.jpg" alt="The Challenge" className="stem-challenge-card-img" />
             </div>
@@ -98,24 +95,38 @@ export function STEMInitiativeSection() {
               <h3 className="h5 fw-bold mb-0">{CHALLENGE.problem.title}</h3>
             </div>
             <div className="stem-challenge-card-body">
-              <p className="text-muted mb-0">{CHALLENGE.problem.body}</p>
+              <p className="text-muted mb-1">{CHALLENGE.problem.body}</p>
+              <p className="mb-0 mt-1">
+                <button
+                  type="button"
+                  className="stem-solution-inline-link"
+                  onClick={() => setActiveCard("solution")}
+                >
+                  Click for solution
+                </button>
+              </p>
             </div>
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveCard("solution")}
-            className={`stem-challenge-card stem-challenge-card--solution ${activeCard === "solution" ? "stem-challenge-card--active" : ""}`}
-          >
-            <div className="stem-challenge-card-image">
-              <img src="/images/stem-solution.jpg" alt="The MIP Solution" className="stem-challenge-card-img" />
-            </div>
-            <div className="stem-challenge-card-header" style={{ backgroundColor: "var(--mip-royal-blue)" }}>
-              <h3 className="h5 fw-bold mb-0">{CHALLENGE.solution.title}</h3>
-            </div>
-            <div className="stem-challenge-card-body">
-              <p className="text-muted mb-0">{CHALLENGE.solution.body}</p>
-            </div>
-          </button>
+            {activeCard === "solution" && (
+              <div className="stem-solution-overlay" role="dialog" aria-label="MIP Solution">
+                <div className="stem-challenge-card-image">
+                  <img src="/images/stem-solution.jpg" alt="The MIP Solution" className="stem-challenge-card-img" />
+                </div>
+                <div className="stem-challenge-card-header" style={{ backgroundColor: "var(--mip-royal-blue)" }}>
+                  <h3 className="h5 fw-bold mb-0">{CHALLENGE.solution.title}</h3>
+                </div>
+                <div className="stem-challenge-card-body">
+                  <p className="text-muted mb-0">{CHALLENGE.solution.body}</p>
+                </div>
+                <button
+                  type="button"
+                  className="stem-solution-close-line"
+                  onClick={() => setActiveCard("problem")}
+                >
+                  Back to problem
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* How it Works — vertical timeline */}
@@ -141,112 +152,33 @@ export function STEMInitiativeSection() {
         </div>
 
         <div className="stem-deliverables">
-          <h3 className="h3 fw-bold text-dark mb-2">Deliverables</h3>
-          {/* Two cards in one section */}
+          <h3 className="h3 fw-bold text-dark mb-2 text-center">Deliverables</h3>
           <div className="row g-4 mb-4">
-            <div className="col-md-6">
-              <div className="stem-flashcard stem-flashcard--flip stem-flashcard--tool">
-                <div className="stem-flashcard-inner">
-                  <div className="stem-flashcard-front">
-                    <div className="stem-flashcard-front-header" style={{ backgroundColor: "var(--mip-dark-blue)" }}>
-                      <h5 className="stem-flashcard-title">Tools / Frameworks</h5>
-                    </div>
-                    <div className="stem-flashcard-front-body">
-                      <p className="stem-flashcard-desc">Our STEM tech stack and structured processes—project scoping, weekly cadence, and evaluation rubrics—that partners can adopt to run internship and leadership programs at scale</p>
-                      <span className="stem-flashcard-hint">Hover to view image</span>
-                    </div>
-                  </div>
-                  <div className="stem-flashcard-back">
-                    <img src="/images/Mip-Stem-tech.png" alt="Tool / Framework" className="stem-flashcard-img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="stem-flashcard stem-flashcard--flip stem-flashcard--dashboard">
-                <div className="stem-flashcard-inner">
-                  <div className="stem-flashcard-front">
-                    <div className="stem-flashcard-front-header" style={{ backgroundColor: "var(--mip-royal-blue)" }}>
-                      <h5 className="stem-flashcard-title">Evaluation Dashboard</h5>
-                    </div>
-                    <div className="stem-flashcard-front-body">
-                      <p className="stem-flashcard-desc">A central hub connecting HR & talent, operational efficiency, resources & learning, professional development, and visibility—with real-time data and reporting for funders and partners</p>
-                      <span className="stem-flashcard-hint">Hover to view image</span>
-                    </div>
-                  </div>
-                  <div className="stem-flashcard-back">
-                    <img src="/images/Mip-Stem-ED.png" alt="Evaluation Dashboard" className="stem-flashcard-img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
             <div className="col-12">
-              <div
-                className="stem-flashcard stem-flashcard--no-image stem-flashcard--partnership"
-                onMouseEnter={(e) => e.currentTarget.classList.add("stem-partnership-card--hover")}
-                onMouseLeave={(e) => e.currentTarget.classList.remove("stem-partnership-card--hover")}
-              >
-                <div className="card-body stem-partnership-card-content">
-                  <h5 className="card-title stem-flashcard-title">Partnership Model</h5>
-                  <p className="card-text small mb-0">Documented MOU-based partnerships with universities and employers, plus invitation-to-collaborate materials for workforce entities</p>
+              <div className="stem-deliverable-hover-card stem-deliverable-hover-card--tool">
+                <img src="/images/Mip-Stem-tech.png" alt="Tool / Framework" className="stem-deliverable-hover-img" />
+                <div className="stem-deliverable-hover-overlay">
+                  <h5 className="stem-flashcard-title mb-2">Tools / Frameworks</h5>
+                  <p className="mb-0">
+                    Our STEM tech stack and structured processes project scoping, weekly cadence, and evaluation rubrics that partners can adopt to run internship and leadership programs at scale.
+                  </p>
                 </div>
-                <div className="stem-partnership-card-hover">
-                  <p className="stem-partnership-card-hover-desc">Submit a partnership request and we’ll get back to you</p>
-                  <button type="button" className="stem-partnership-card-btn" onClick={() => setPartnershipModalOpen(true)}>
-                    Submit Request
-                  </button>
+              </div>
+            </div>
+            <div className="col-12">
+              <div className="stem-deliverable-hover-card stem-deliverable-hover-card--dashboard">
+                <img src="/images/Mip-Stem-ED.png" alt="Evaluation Dashboard" className="stem-deliverable-hover-img" />
+                <div className="stem-deliverable-hover-overlay">
+                  <h5 className="stem-flashcard-title mb-2">Evaluation Dashboard</h5>
+                  <p className="mb-0">
+                    A central hub connecting HR and talent, operational efficiency, resources and learning, professional development, and visibility with real-time data for partners.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Partnership request modal — portaled to body so it opens in the visible viewport */}
-      {partnershipModalOpen &&
-        typeof document !== "undefined" &&
-        createPortal(
-          <div className="stem-partnership-modal-overlay" onClick={() => setPartnershipModalOpen(false)}>
-            <div className="stem-partnership-modal" onClick={(e) => e.stopPropagation()}>
-              <div className="stem-partnership-modal-header">
-                <h4 className="stem-partnership-modal-title">Partnership Request</h4>
-                <button type="button" className="stem-partnership-modal-close" onClick={() => setPartnershipModalOpen(false)} aria-label="Close">
-                  ×
-                </button>
-              </div>
-              <form onSubmit={handlePartnershipSubmit} className="stem-partnership-modal-form">
-                <div className="mb-3">
-                  <label htmlFor="partnership-name" className="form-label">Name</label>
-                  <input id="partnership-name" type="text" className="form-control" required value={partnershipForm.name} onChange={(e) => setPartnershipForm((f) => ({ ...f, name: e.target.value }))} placeholder="Your name" />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="partnership-email" className="form-label">Email</label>
-                  <input id="partnership-email" type="email" className="form-control" required value={partnershipForm.email} onChange={(e) => setPartnershipForm((f) => ({ ...f, email: e.target.value }))} placeholder="your@email.com" />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="partnership-type" className="form-label">I am a</label>
-                  <select id="partnership-type" className="form-select" required value={partnershipForm.type} onChange={(e) => setPartnershipForm((f) => ({ ...f, type: e.target.value as typeof partnershipForm.type }))}>
-                    <option value="">Select...</option>
-                    {PARTNER_TYPES.map((t) => (
-                      <option key={t} value={t}>{t}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="partnership-message" className="form-label">Message</label>
-                  <textarea id="partnership-message" className="form-control" rows={3} value={partnershipForm.message} onChange={(e) => setPartnershipForm((f) => ({ ...f, message: e.target.value }))} placeholder="Brief description of your interest..." />
-                </div>
-                <div className="d-flex gap-2 justify-content-end">
-                  <button type="button" className="btn btn-outline-secondary" onClick={() => setPartnershipModalOpen(false)}>Cancel</button>
-                  <button type="submit" className="btn btn-primary">Submit</button>
-                </div>
-              </form>
-            </div>
-          </div>,
-          document.body
-        )}
     </section>
   );
 }
