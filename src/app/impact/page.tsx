@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SuccessStoriesCarousel } from "@/components/sections/SuccessStoriesCarousel";
+import { ImpactTeamMapSection } from "@/components/sections/ImpactTeamMapSection";
 
 export const metadata: Metadata = {
   title: "Impact | MIP — Projxon",
@@ -142,6 +143,8 @@ export default function ImpactPage() {
             ))}
           </div>
         </section>
+
+        <ImpactTeamMapSection />
 
         {/* Success Stories — ex-intern reviews carousel */}
         <section className="mb-5">
