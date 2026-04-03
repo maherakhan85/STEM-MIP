@@ -173,14 +173,14 @@ h2.section-heading,
 
 /* Content starts below navbar and scrolls under it (no overlap) */
 main {
-  padding-top: 60px;
+  padding-top: 70px;
   position: relative;
   z-index: 0;
 }
 
 @media (min-width: 768px) {
   main {
-    padding-top: 68px;
+    padding-top: 88px;
   }
 }
 
@@ -204,14 +204,14 @@ main {
 
 .navbar-mip .navbar-mip-logo {
   height: auto;
-  max-height: 46px;
+  max-height: 130px;
   width: auto;
   object-fit: contain;
 }
 
 @media (min-width: 768px) {
   .navbar-mip .navbar-mip-logo {
-    max-height: 56px;
+    max-height: 68px;
   }
 }
 
@@ -450,21 +450,21 @@ main {
 /* Pull hero up so it meets the navbar (no gap); content gets padding so it stays below nav */
 .hero-section {
   position: relative;
-  margin-top: -60px;
+  margin-top: -70px;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   background-color: #0a1628;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 70px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .hero-section .hero-content-wrap {
-  padding-top: 60px;
+  padding-top: 70px;
 }
 
 /* Sliding background images (stem-hero-HR, IT, mkt, business) */
@@ -493,11 +493,11 @@ main {
 
 @media (min-width: 768px) {
   .hero-section {
-    margin-top: -68px;
-    min-height: calc(100vh - 68px);
+    margin-top: -88px;
+    min-height: calc(100vh - 88px);
   }
   .hero-section .hero-content-wrap {
-    padding-top: 68px;
+    padding-top: 88px;
   }
 }
 
@@ -2441,6 +2441,95 @@ main {
   margin-top: 0.5rem;
   border-radius: 50%;
   background: var(--mip-accent);
+}
+
+/* ========== Partners page — homepage gradient visible; Impact palette on surfaces ========== */
+.partners-page-section {
+  background-color: transparent !important;
+}
+
+.partners-surface-card {
+  position: relative;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid var(--mip-silver);
+  box-shadow: 0 2px 12px rgba(9, 16, 87, 0.06);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.partners-surface-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--mip-dark-blue) 0%,
+    var(--mip-royal-blue-dark) 50%,
+    var(--mip-accent) 100%
+  );
+  opacity: 0.95;
+}
+
+.partners-surface-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(9, 16, 87, 0.1);
+  border-color: rgba(2, 76, 170, 0.22);
+}
+
+.partners-stat-card {
+  position: relative;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid var(--mip-silver);
+  box-shadow: 0 2px 12px rgba(9, 16, 87, 0.06);
+  overflow: hidden;
+  min-width: 200px;
+  max-width: 280px;
+  flex: 1 1 200px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.partners-stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--mip-dark-blue) 0%,
+    var(--mip-royal-blue-dark) 50%,
+    var(--mip-accent) 100%
+  );
+  opacity: 0.95;
+}
+
+.partners-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(9, 16, 87, 0.1);
+  border-color: rgba(2, 76, 170, 0.22);
+}
+
+.partners-stat-value {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--mip-dark-blue);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.partners-stat-label {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0.35rem 0 0 0;
+  line-height: 1.45;
 }
 
 

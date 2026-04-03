@@ -39,8 +39,8 @@ export function Header() {
           <Image
             src="/images/projxon-mip-logo.png"
             alt=""
-            width={160}
-            height={52}
+            width={200}
+            height={120}
             className="navbar-mip-logo"
             priority
           />
