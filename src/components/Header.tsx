@@ -6,7 +6,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const mainNavItems = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/impact", label: "Impact" },
   { href: "/partners", label: "Partners" },
@@ -32,10 +31,14 @@ export function Header() {
   return (
     <nav className="navbar navbar-expand-md navbar-mip border-bottom shadow-sm">
       <div className="container">
-        <Link href="/" className="navbar-brand d-flex align-items-center p-0">
+        <Link
+          href="/"
+          className="navbar-brand d-flex align-items-center p-0"
+          aria-label="Home"
+        >
           <Image
             src="/images/projxon-mip-logo.png"
-            alt="MIP"
+            alt=""
             width={160}
             height={52}
             className="navbar-mip-logo"

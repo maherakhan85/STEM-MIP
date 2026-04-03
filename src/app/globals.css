@@ -430,6 +430,22 @@ main {
   background-color: transparent !important;
 }
 
+/* About route only — solid surface (not home sections; bg-white is forced transparent above) */
+.section-padding.about-page {
+  position: relative;
+  z-index: 1;
+  background-color: #f4f4f5;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding.about-page {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+}
+
 /* ========== HERO — Visuals & animations ========== */
 /* Pull hero up so it meets the navbar (no gap); content gets padding so it stays below nav */
 .hero-section {

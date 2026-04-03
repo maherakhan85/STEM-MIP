@@ -1,6 +1,6 @@
 export function AboutSection() {
   return (
-    <section id="about" className="section-padding bg-white">
+    <section id="about" className="section-padding about-page">
       <style>{`.about-story-img-wrap { min-height: 410px; }
 .about-story-img-inner { min-height: 380px; }
 .about-story-img { height: 290px; display: block; }
@@ -163,13 +163,14 @@ export function AboutSection() {
           <h3 className="h2 fw-bold text-dark mb-3 text-center">Founder&apos;s Commitment</h3>
           <p className="text-muted mb-2">
             I started this because I saw the same problem from both sides—schools sending talented people out without a playbook, and employers wondering where to find them.
-          
-          
+          </p>
+          <p className="text-muted mb-2">
             The commitment isn&apos;t just to run a program. It&apos;s to run one we can stand behind: we share how we&apos;re doing, we use data to improve, and we work closely with universities and employers so MIP stays repeatable and useful at scale. No black boxes.
-            </p>
+          </p>
           <p className="text-muted mb-2">
             The goal is a pipeline that actually develops future-ready leaders and problem-solvers, not just fills slots.
-         
+          </p>
+          <p className="text-muted mb-2">
             That only works if we stay transparent, keep improving, and treat our campus and employer partners as real partners. That&apos;s the standard we hold ourselves to.
           </p>
           <p className="text-muted mt-4 mb-0 text-end">

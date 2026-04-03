@@ -1,0 +1,2 @@
+# Store and check out text files with LF (matches typical Node/Next tooling; avoids CRLF/LF churn on Windows).
+* text=auto eol=lf
