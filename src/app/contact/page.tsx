@@ -13,7 +13,6 @@ export default function ContactPage() {
       <div className="container">
        
         <h1 className="h2 fw-bold section-heading mb-1">Contact</h1>
-        <p className="text-muted text-center mb-5">Get in touch for the OSIT Grant Initiative and MIP collaboration</p>
         <div className="row justify-content-center">
           <div className="col-lg-8">
             <ContactForm />

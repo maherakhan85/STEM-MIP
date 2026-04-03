@@ -68,7 +68,6 @@ export default function ImpactPage() {
         {/* Metrics Dashboard */}
         <div className="impact-dashboard mb-5">
           <h2 className="h3 fw-bold subheading-royal mb-2">Metrics Dashboard</h2>
-          <p className="text-muted text-center mb-4">We measure what matters. These KPIs are tracked in our evaluation framework and reported in quarterly and grant deliverables.</p>
           <div className="impact-metrics-grid">
             <div className="impact-metric-card impact-metric-card--flip">
               <div className="impact-metric-card-inner">

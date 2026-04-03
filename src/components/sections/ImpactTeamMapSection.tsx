@@ -452,7 +452,7 @@ export function ImpactTeamMapSection() {
   return (
     <section className="mb-5">
       <h2 className="h3 fw-bold subheading-royal mb-2">Team Distribution Map</h2>
-      <p className="text-muted text-center mb-4">Where our MIP team members are based across the United States.</p>
+      <p className="text-muted text-center mb-4">Where our MIP team members are based across the United States</p>
 
       <div className={styles.mapWrapper}>
         <div className={styles.mapHeader}>
